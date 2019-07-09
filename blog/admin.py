@@ -13,4 +13,7 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ('status', 'publish')
 
 
+admin.site.site_title = 'Bloggy'
+admin.site.site_header = 'Bloggy'
+
 admin.site.register(Post, PostAdmin)
