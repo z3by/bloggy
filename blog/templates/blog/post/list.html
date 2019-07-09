@@ -1,20 +1,27 @@
 {% extends "blog/base.html" %}
 
-{% block title %}My Blog{% endblock %}
+{% block title %}Bloggy{% endblock %}
 
 {% block content %}
-  <h1>My Blog</h1>
-  {% for post in posts %}
-    <h2>
-      <a href="{{ post.get_absolute_url }}">
-        {{ post.title }}
-      </a>
-    </h2>
-    <p class="date">
-      Published {{ post.publish }} by {{ post.author }}
-    </p>
-    {{ post.body|truncatewords:30|linebreaks }}
-  {% endfor %}
 
-  {% include "pagination.html" with page=posts %}
+{% for post in posts %}
+<div class="card my-3 rounded">
+  <div class="card-body">
+    <h3 class="text-primary text-capitalize">
+        {{ post.title }}
+    </h3>
+    <span class="text-secondary">Published {{ post.publish }} by {{ post.author }}</span>
+    <p class="card-text">
+        {{ post.body|truncatewords:30|linebreaks }}
+    </p>
+    <a href="{{ post.get_absolute_url }}" class="btn btn-light bg-primary float-right">
+        Read
+    </a>
+    
+  </div>
+</div>
+{% endfor %}
+
+{% include "pagination.html" with page=page_obj %}
+
 {% endblock %}

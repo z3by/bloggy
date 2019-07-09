@@ -3,9 +3,11 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-  <h1>{{ post.title }}</h1>
-  <p class="date">
+  <h1 class="text-primary text-center">{{ post.title }}</h1>
+  <p class="text-secondary text-center">
     Published {{ post.publish }} by {{ post.author }}
   </p>
-  {{ post.body|linebreaks }}
+  <p class="article-text">
+    {{ post.body|linebreaks }}
+  </p>
 {% endblock %}
