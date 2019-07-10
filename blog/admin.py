@@ -1,5 +1,9 @@
 from django.contrib import admin
-from blog.models import Post
+from blog.models import Post, Comment
+
+
+admin.site.site_title = 'Bloggy'
+admin.site.site_header = 'Bloggy'
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -13,7 +17,11 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ('status', 'publish')
 
 
-admin.site.site_title = 'Bloggy'
-admin.site.site_header = 'Bloggy'
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'post', 'created', 'active')
+    list_filter = ('active', 'created', 'updated')
+    search_fields = ('name', 'email', 'body')
+
 
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment, CommentAdmin)

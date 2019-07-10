@@ -1,18 +1,74 @@
-{% extends "blog/base.html" %}
-
-{% block title %}{{ post.title }}{% endblock %}
-
+{% extends "blog/base.html" %} {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<h1 class="text-primary text-center">{{ post.title }}</h1>
+<h1 class="text-primary text-center">{{ post.title | title }}</h1>
 <p class="text-secondary text-center">
   Published {{ post.publish }} by {{ post.author }}
 </p>
-<p>
-  <a href="{% url 'blog:post_share' post.slug %}">
-    Share this post by Email
+<div class="bg-white p-3 rounded">
+  <p class="article-text">
+    {{ post.body | linebreaks }}
+  </p>
+</div>
+
+<hr />
+<div class="actions px-3">
+  {% with comments.count as total_comments %}
+  <span class="text-secondary">
+    {{ total_comments }} comment{{ total_comments | pluralize }}
+  </span>
+  {% endwith %}
+  <a
+    class="btn btn-light mx-3 bg-primary"
+    href="{% url 'blog:post_share' post.slug %}"
+  >
+    Share By Email
   </a>
-</p>
-<p class="article-text">
-  {{ post.body|linebreaks }}
-</p>
+</div>
+<hr />
+
+{% for comment in comments %}
+<div class="card p-3 rounded">
+  <div class="d-flex align-items-center">
+    <img
+      src="https://png.pngtree.com/svg/20161021/de74bae88b.png"
+      alt=""
+      class="avatar"
+    />
+    <div>
+      <h6 class="text-primary m-0">
+        {{ comment.name | title }}
+      </h6>
+      <small class="text-secondary">
+        {{ comment.created }}
+      </small>
+    </div>
+  </div>
+
+  <p>
+    {{ comment.body | linebreaks }}
+  </p>
+</div>
+{% empty %}
+<div class="card p-3">
+  <p>There are no comments yet.</p>
+</div>
+{% endfor %}
+<div class="card p-3 my-3">
+  {% if new_comment %}
+  <h2>Your comment has been added.</h2>
+  {% else %}
+  <h4 class="text-primary">Add a new comment</h4>
+  <form action="." method="post">
+    {{ comment_form.as_p }}
+    {% csrf_token %}
+    <p>
+      <input
+        class="btn btn-light bg-primary"
+        type="submit"
+        value="Add comment"
+      />
+    </p>
+  </form>
+  {% endif %}
+</div>
 {% endblock %}
