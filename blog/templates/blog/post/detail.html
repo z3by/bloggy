@@ -4,7 +4,7 @@
 <p class="text-secondary text-center">
   Published {{ post.publish }} by {{ post.author }}
 </p>
-<div class="bg-white p-3 px-md-5">
+<div class="bg-white p-3">
   <p class="article-text">
     {{ post.body|linebreaks }}
   </p>
@@ -12,6 +12,37 @@
 
 <br />
 <br />
+
+<div class="similar_posts">
+    <h6 class="text-dark text-center">Read More Like This Article</h6>
+    <div class="row">
+      {% for post in similar_posts %}
+      <div class="card p-3 mx-2 col">
+        <h6 class="text-primary text-capitalize">
+              {{ post.title }}
+            </h6>
+            <small class="text-secondary"> @{{ post.author }}</small>
+        <div class="py-4">
+          <small class="card-text">
+            {{ post.body|truncatewords:10|linebreaks }}
+          </small>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <a href="{{ post.get_absolute_url }}" class="btn btn-outline-primary btn-sm">
+              Read
+            </a>
+          </div>
+          <div class="col-8 text-right">
+            <small class="text-secondary">{{ post.publish|date:"F Y" }}</small>
+          </div>
+        </div>
+        
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
 <br />
 <br />
 
