@@ -1,10 +1,17 @@
+body {
+  background-color: #fafafa;
+}
+.bg-light {
+  background: #fafafa !important;
+}
 .rounded {
   border-radius: 20px !important;
 }
 
 .card {
-  /* box-shadow: 0px 2px 20px #ddd; */
-  transition: all .3s ease;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease;
+  border: none;
 }
 .card.post:hover {
   box-shadow: 0px 5px 10px #aaa;
@@ -16,10 +23,6 @@
   width: 50px;
   margin-right: 10px;
 }
-.icon {
-  height: 30px;
-  width: 30px;
-}
 
 .btn-light {
   color: aliceblue;
@@ -27,4 +30,68 @@
 
 .form-control {
   background: var(--light);
+}
+.btn-outline-primary {
+  color: #7656f2 !important;
+  border-color: #7656f2 !important;
+  transition: all .3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: none;
+  transform: scale(1.03);
+}
+
+a,
+.text-primary {
+  color: #7656f2 !important;
+}
+.text-secondary {
+  color: rgba(0, 0, 0, 0.40) !important;
+}
+
+.navbar-brand span {
+  opacity: 0.5 !important;
+  transition: all .3s ease;
+}
+
+.navbar-brand:hover span,
+.navbar-brand:hover .icon {
+  opacity: 1 !important;
+}
+.navbar-brand:hover {
+  transform: translateX(5px);
+  transition: all .3s ease;
+  
+}
+
+.icon {
+  height: 30px;
+  width: 30px;
+  opacity: 0.4 !important;
+}
+.icon:hover {
+  opacity: 1 !important;
+}
+
+.next-btn,
+.prev-btn {
+  height: 17px;
+  width: 17px;
+  opacity: .4;
+}
+
+.prev-btn {
+  transform: rotateY(180deg)
+}
+.next-btn:hover,
+.prev-btn:hover {
+  opacity: 1;
+}
+
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 800px;
+  }
 }

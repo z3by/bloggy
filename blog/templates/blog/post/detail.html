@@ -22,13 +22,12 @@
   </span>
   {% endwith %}
   <a
-    class="btn btn-light mx-3 bg-primary"
+    class="btn btn-outline-primary mx-3"
     href="{% url 'blog:post_share' post.slug %}"
   >
     Share By Email
   </a>
 </div>
-<br />
 <br />
 
 {% for comment in comments %}
@@ -71,7 +70,7 @@
     {% csrf_token %}
     <p>
       <input
-        class="btn btn-light bg-primary"
+        class="btn btn-outline-primary"
         type="submit"
         value="Add comment"
       />

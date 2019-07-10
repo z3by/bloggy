@@ -1,13 +1,17 @@
-<div class="pagination">
-  <span class="step-links">
+<div class="text-center">
+  <div class="step-links">
     {% if page.has_previous %}
-    <a href="?page={{ page.previous_page_number }}">Previous</a>
+    <a href="?page={{ page.previous_page_number }}" class="mx-3">
+        <img src="https://png.pngtree.com/svg/20170523/d62342689e.svg" alt="" class="prev-btn">      
+    </a>
     {% endif %}
     <span class="current">
       Page {{ page.number }} of {{ page.paginator.num_pages }}.
     </span>
     {% if page.has_next %}
-    <a href="?page={{ page.next_page_number }}">Next</a>
+    <a href="?page={{ page.next_page_number }}" class="mx-3">
+      <img src="https://png.pngtree.com/svg/20170523/d62342689e.svg" alt="" class="next-btn">
+    </a>
     {% endif %}
-  </span>
+  </div>
 </div>
