@@ -1,42 +1,30 @@
 <nav class="navbar navbar-light bg-white border">
   <a class="navbar-brand" href="/blog/">
-    <img src="https://cdn.onlinewebfonts.com/svg/img_198846.png" alt="" class="icon">
+    <img
+      src="https://cdn.onlinewebfonts.com/svg/img_198846.png"
+      alt=""
+      class="icon"
+    />
     <span>
-        Bloggy
+      Bloggy
     </span>
-    </a>
-  
-  <div class="" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/blog/"
-          >
-          <img src="http://cdn.onlinewebfonts.com/svg/img_387447.png" alt="" class="icon">
-          <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
-    </ul>
-  </div>
+  </a>
+
+  <ul class="d-flex list-unstyled">
+    <li class="nav-item">
+      <a class="nav-link" href="/blog/">
+        <img
+          src="http://cdn.onlinewebfonts.com/svg/img_387447.png"
+          alt=""
+          class="icon"
+        />
+        <span class="sr-only">(current)</span></a
+      >
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'blog:post_feed' %}" class="nav-link">
+        <img src="http://simpleicon.com/wp-content/uploads/rss.svg" alt="" class="icon">
+      </a>
+    </li>
+  </ul>
 </nav>
