@@ -3,7 +3,7 @@
 }
 
 .card {
-  box-shadow: 0px 2px 20px #ddd;
+  /* box-shadow: 0px 2px 20px #ddd; */
   transition: all .3s ease;
 }
 .card.post:hover {

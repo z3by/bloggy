@@ -3,6 +3,10 @@
 {% block title %}Bloggy{% endblock %}
 
 {% block content %}
+{% if tag %}
+  <h3 class="text-primary">Posts tagged with "{{ tag.name }}"</h3>
+{% endif %}
+
 {% for post in posts %}
 <div class="card post my-3 rounded">
   <div class="card-body">
@@ -11,6 +15,12 @@
         <h4 class="text-primary text-capitalize">
           {{ post.title }}
         </h4>
+        {% for tag in post.tags.all %}
+        <a class="badge text-secondary badge-light"
+           href="{% url 'blog:post_list_by_tag' tag.slug %}">
+          #{{ tag.name }}
+        </a>
+        {% endfor %}
       </div>
       <div class="col">
           <h6 class="text-secondary text-right"> @{{ post.author }}</h6>
@@ -36,6 +46,6 @@
 </div>
 {% endfor %}
 
-{% include "pagination.html" with page=page_obj %}
+{% include "pagination.html" with page=posts %}
 
 {% endblock %}
