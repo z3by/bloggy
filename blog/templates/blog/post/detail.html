@@ -1,4 +1,8 @@
-{% extends "blog/base.html" %} {% block title %}{{ post.title }}{% endblock %}
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
 {% block content %}
 <h1 class="text-dark text-center">{{ post.title | title }}</h1>
 <p class="text-secondary text-center">
@@ -6,7 +10,7 @@
 </p>
 <div class="bg-white p-3">
   <p class="article-text">
-    {{ post.body|linebreaks }}
+    {{ post.body|markdown }}
   </p>
 </div>
 
@@ -24,7 +28,7 @@
             <small class="text-secondary"> @{{ post.author }}</small>
         <div class="py-4">
           <small class="card-text">
-            {{ post.body|truncatewords:10|linebreaks }}
+            {{ post.body|markdown|truncatewords_html:10 }}
           </small>
         </div>
         <div class="row">
