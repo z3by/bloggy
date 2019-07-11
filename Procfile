@@ -1,0 +1,1 @@
+web: gunicorn config.wsgi --keep-alive 5 --log-level debug
